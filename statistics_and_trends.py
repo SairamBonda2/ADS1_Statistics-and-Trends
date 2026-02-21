@@ -4,40 +4,22 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 sns.set(style="whitegrid")
-
-df = pd.read_csv(
-    "./data.csv"
-)
-
+df = pd.read_csv("./data.csv")
 print("Dataset Preview:")
 print(df.head())
-
-
 print("\nDataset Shape:", df.shape)
-
 print("\nDataset Info:")
 print(df.info())
-
 print("\nMissing Values in Each Column:")
 print(df.isnull().sum())
-
 df["Placement_Offer"] = df["Placement_Offer"].astype("category")
 df["Gender"] = df["Gender"].astype("category")
 df["Degree"] = df["Degree"].astype("category")
-
-
 df = df[df["CGPA"] <= 4.0]
 df = df[df["Salary_Offered_USD"] >= 0]
-
 print("\nData Cleaning Completed.")
 print("New Dataset Shape:", df.shape)
-
-
-df["Total_Skills_Score"] = (
-    df["Technical_Skills_Score_100"]
-    + df["Communication_Skills_Score_100"]
-    + df["Aptitude_Test_Score_100"]
-)
+df["Total_Skills_Score"] = (df["Technical_Skills_Score_100"]+ df["Communication_Skills_Score_100"]+ df["Aptitude_Test_Score_100"])
 
 df["High_CGPA"] = np.where(df["CGPA"] >= 3.5, "Yes", "No")
 
