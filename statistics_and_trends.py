@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 sns.set(style="whitegrid")
 
 df = pd.read_csv(
-    r"C:\Users\sai ram\Downloads\Student_Placement_Skills_2025.csv"
+    "./data.csv"
 )
 
 print("Dataset Preview:")
