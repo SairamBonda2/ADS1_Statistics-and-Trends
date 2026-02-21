@@ -1,18 +1,14 @@
-
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-
 def load_data(filepath: str) -> pd.DataFrame:
     return pd.read_csv(filepath)
 
 
-
 def inspect_data(df: pd.DataFrame) -> None:
-
     print("\n===== DATA PREVIEW =====")
     print(df.head())
 
@@ -26,9 +22,7 @@ def inspect_data(df: pd.DataFrame) -> None:
     print(df.corr(numeric_only=True))
 
 
-
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
-
     categorical_cols = ["Placement_Offer", "Gender", "Degree"]
 
     for col in categorical_cols:
@@ -40,9 +34,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
-
     df["Total_Skills_Score"] = (
         df["Technical_Skills_Score_100"]
         + df["Communication_Skills_Score_100"]
@@ -54,9 +46,7 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-
 def relational_plot(df: pd.DataFrame) -> None:
-   
     plt.figure(figsize=(8, 5))
 
     sns.scatterplot(
@@ -70,7 +60,6 @@ def relational_plot(df: pd.DataFrame) -> None:
     plt.xlabel("CGPA")
     plt.ylabel("Salary (USD)")
     plt.show()
-
 
 
 def categorical_plot(df: pd.DataFrame) -> None:
@@ -87,9 +76,7 @@ def categorical_plot(df: pd.DataFrame) -> None:
     plt.show()
 
 
-
 def statistical_plot(df: pd.DataFrame) -> None:
-
     plt.figure(figsize=(10, 6))
 
     corr = df.corr(numeric_only=True)
@@ -102,7 +89,6 @@ def statistical_plot(df: pd.DataFrame) -> None:
 
     plt.title("Correlation Heatmap")
     plt.show()
-
 
 
 def statistical_analysis(df: pd.DataFrame) -> None:
@@ -129,7 +115,6 @@ def statistical_analysis(df: pd.DataFrame) -> None:
     print(metrics.kurtosis())
 
 
-
 def main() -> None:
     sns.set(style="whitegrid")
 
@@ -145,7 +130,6 @@ def main() -> None:
     statistical_analysis(df)
 
     print("\nAnalysis Completed Successfully.")
-
 
 
 if __name__ == "__main__":
